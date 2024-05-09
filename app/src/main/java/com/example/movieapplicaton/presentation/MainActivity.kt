@@ -16,7 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.movieapplicaton.presentation.movie_detail.views.MovieDetailScreen
+import com.example.movieapplicaton.presentation.movies.views.MovieScreen
 import com.example.movieapplicaton.presentation.ui.theme.MovieApplicatonTheme
+import com.example.movieapplicaton.util.Constants.IMDB_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,13 +34,13 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background)
                     {
                         val navController = rememberNavController()
-                        NavHost(navController = navController, startDestination = ) {
-                            composable(route = "") {
-
+                        NavHost(navController = navController, startDestination = Screen.MovieScreen.route) {
+                            composable(route = Screen.MovieScreen.route) {
+                                MovieScreen(navController = navController)
                             }
 
-                            composable(route = "") {
-
+                            composable(route = Screen.MovieDetailScreen.route + "/{${IMDB_ID}}") {
+                                MovieDetailScreen()
                             }
                         }
                 }
